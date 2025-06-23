@@ -19,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -106,6 +107,11 @@ public class PermissionServiceImpl
                         "%" + search.toLowerCase() + "%"
                 )
         );
+    }
+
+    @Override
+    public Set<Permission> findAllByIds(Set<String> ids) {
+        return permissionRepository.findAllByIdIn(ids);
     }
 
     @Override

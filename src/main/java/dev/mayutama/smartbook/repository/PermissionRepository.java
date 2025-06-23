@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
+import java.util.Set;
 
 @Repository
 public interface PermissionRepository extends BaseRepository<Permission, String> {
@@ -18,4 +19,6 @@ public interface PermissionRepository extends BaseRepository<Permission, String>
         nativeQuery = true
     )
     Optional<Permission> findByIdIsActive(@Param("id") String id);
+
+    Set<Permission> findAllByIdIn(Set<String> ids);
 }

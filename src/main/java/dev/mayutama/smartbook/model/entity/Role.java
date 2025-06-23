@@ -23,7 +23,7 @@ public class Role extends BaseEntity {
     @Builder.Default
     private Boolean isActive = true;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(
             name = DbPath.TRX_ROLE_PERMISSION_SCHEMA,
             joinColumns = @JoinColumn(name = "role_id"),
