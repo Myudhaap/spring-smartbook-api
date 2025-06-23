@@ -23,7 +23,8 @@ import org.springframework.security.web.access.AccessDeniedHandler;
 @RequiredArgsConstructor
 public class SecurityConfiguration {
     private static final String[] WHITE_LIST = {
-      "/api/v1/auth/**"
+        "/api/v1/auth/**",
+        "/api/v1/permissions/**"
     };
 
     @Bean

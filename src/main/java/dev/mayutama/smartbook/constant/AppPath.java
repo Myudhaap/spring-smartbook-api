@@ -5,4 +5,5 @@ public class AppPath {
     public static final String BY_ID = "/{id}";
     public static final String AUTH = API_VERSION_1 + "/auth";
     public static final String ROLE = API_VERSION_1 + "/roles";
+    public static final String PERMISSION = API_VERSION_1 + "/permissions";
 }
