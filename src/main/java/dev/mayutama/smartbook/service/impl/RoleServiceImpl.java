@@ -6,7 +6,6 @@ import dev.mayutama.smartbook.common.rest.RestParamRequest;
 import dev.mayutama.smartbook.common.service.EngineFilterService;
 import dev.mayutama.smartbook.exception.ApplicationException;
 import dev.mayutama.smartbook.model.dto.request.role.RoleReq;
-import dev.mayutama.smartbook.model.dto.response.permission.PermissionRes;
 import dev.mayutama.smartbook.model.dto.response.role.RoleRes;
 import dev.mayutama.smartbook.model.entity.Permission;
 import dev.mayutama.smartbook.model.entity.Role;

@@ -7,4 +7,6 @@ public class AppPath {
     public static final String ROLE = API_VERSION_1 + "/roles";
     public static final String PERMISSION = API_VERSION_1 + "/permissions";
     public static final String USER = API_VERSION_1 + "/users";
+    public static final String GENRE = API_VERSION_1 + "/genres";
+    public static final String BOOK = API_VERSION_1 + "/books";
 }
