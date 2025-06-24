@@ -10,6 +10,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +21,7 @@ import java.util.List;
 public class ReviewController {
     private final ReviewService reviewService;
 
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasAuthority('PERMIT_ALL')")
     @GetMapping
     public ResponseEntity<?> getAll(
             @ModelAttribute RestParamRequest paramRequest
@@ -39,6 +41,7 @@ public class ReviewController {
         ReviewRes res = reviewService.findById(id);
         return ResponseUtil.responseSuccess(res, "Success get by id: " + id + " review");
     }
+
 
     @GetMapping("/book" + AppPath.BY_ID )
     public ResponseEntity<?> getAllByBookId(

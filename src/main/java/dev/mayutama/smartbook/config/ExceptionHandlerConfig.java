@@ -9,6 +9,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -82,11 +83,29 @@ public class ExceptionHandlerConfig {
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<?> handleAccessDeniedException(
+            AccessDeniedException exception,
+            HttpServletRequest req
+    ) {
+        CommonErrorResponse errorResponse = CommonErrorResponse.builder()
+                .errorCode("-")
+                .message(exception.getMessage())
+                .statusName(HttpStatus.FORBIDDEN.name())
+                .statusCode(HttpStatus.FORBIDDEN.value())
+                .path(req.getRequestURI())
+                .method(req.getMethod())
+                .build();
+
+        return new ResponseEntity<>(errorResponse, HttpStatus.FORBIDDEN);
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> handleUniversalException(
             Exception exception,
             HttpServletRequest req
     ) {
+        System.out.println("TEs error");
         CommonErrorResponse errorResponse = CommonErrorResponse.builder()
                 .errorCode("-")
                 .message(exception.getMessage())

@@ -103,6 +103,7 @@ public class AuthServiceImpl implements AuthService {
             }
 
             return LoginRes.builder()
+                    .userId(user.getId())
                     .email(user.getEmail())
                     .accessToken(token)
                     .refreshToken(refreshToken)

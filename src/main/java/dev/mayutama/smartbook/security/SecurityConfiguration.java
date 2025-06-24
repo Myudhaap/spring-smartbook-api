@@ -20,15 +20,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity
+@EnableMethodSecurity(prePostEnabled = true)
 @RequiredArgsConstructor
 public class SecurityConfiguration {
     private final AuthTokenFilter authTokenFilter;
 
     private static final String[] WHITE_LIST = {
-        "/api/v1/auth/**",
-        "/api/v1/permissions/**",
-        "/api/v1/roles/**",
+        "/api/v1/auth/**"
     };
 
     @Bean

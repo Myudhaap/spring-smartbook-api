@@ -17,7 +17,7 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
         response.setStatus(HttpServletResponse.SC_FORBIDDEN);
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-
+        System.out.println("✅ AccessDeniedHandler dipanggil!");
         CommonErrorResponse errorResponse = CommonErrorResponse.builder()
                 .errorCode(HttpStatus.FORBIDDEN.name())
                 .message(accessDeniedException.getMessage())

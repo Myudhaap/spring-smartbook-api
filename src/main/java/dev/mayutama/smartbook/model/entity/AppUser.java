@@ -24,7 +24,7 @@ public class AppUser implements UserDetails {
         Set<GrantedAuthority> authorities = new HashSet<>();
 
         for (Role role : roles) {
-            authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getName()));
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
 
             for (Permission permission : role.getPermissions()) {
                 authorities.add(new SimpleGrantedAuthority(permission.getName()));

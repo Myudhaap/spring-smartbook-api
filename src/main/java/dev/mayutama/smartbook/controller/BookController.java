@@ -10,6 +10,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -39,6 +40,7 @@ public class BookController {
         return ResponseUtil.responseSuccess(res, "Success get by id: " + id + " book");
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasAuthority('PERMIT_ALL')")
     @PostMapping
     public ResponseEntity<?> create(
             @RequestBody @Valid BookReq req
@@ -47,6 +49,7 @@ public class BookController {
         return ResponseUtil.responseSuccessCreate(res, "Success create book");
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasAuthority('PERMIT_ALL')")
     @PutMapping(AppPath.BY_ID)
     public ResponseEntity<?> update(
             @RequestBody @Valid BookReq req,
@@ -56,6 +59,7 @@ public class BookController {
         return ResponseUtil.responseSuccessCreate(res, "Success update book");
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasAuthority('PERMIT_ALL')")
     @DeleteMapping(AppPath.BY_ID)
     public ResponseEntity<?> delete(
             @PathVariable String id

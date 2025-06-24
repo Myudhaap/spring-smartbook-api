@@ -7,6 +7,7 @@ import dev.mayutama.smartbook.service.DashboardService;
 import dev.mayutama.smartbook.util.ResponseUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping(AppPath.DASHBOARD)
 @RequiredArgsConstructor
+@PreAuthorize("hasRole('ROLE_ADMIN') or hasAuthority('PERMIT_ALL')")
 public class DashboardController {
     private final DashboardService dashboardService;
 

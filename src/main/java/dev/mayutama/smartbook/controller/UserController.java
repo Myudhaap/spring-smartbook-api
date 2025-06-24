@@ -10,6 +10,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private final UserService userService;
 
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasAuthority('PERMIT_ALL')")
     @GetMapping
     public ResponseEntity<?> getAll(
             @ModelAttribute RestParamRequest paramRequest
@@ -38,6 +40,7 @@ public class UserController {
         return ResponseUtil.responseSuccess(res, "Success get by id: " + id + " user");
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasAuthority('PERMIT_ALL')")
     @PostMapping
     public ResponseEntity<?> create(
             @RequestBody @Valid UserReq req
@@ -55,6 +58,7 @@ public class UserController {
         return ResponseUtil.responseSuccessCreate(res, "Success update user");
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasAuthority('PERMIT_ALL')")
     @DeleteMapping(AppPath.BY_ID)
     public ResponseEntity<?> delete(
             @PathVariable String id

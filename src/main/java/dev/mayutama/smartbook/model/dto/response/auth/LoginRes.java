@@ -12,6 +12,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LoginRes {
+    private String userId;
     private String email;
     private String accessToken;
     private String refreshToken;
