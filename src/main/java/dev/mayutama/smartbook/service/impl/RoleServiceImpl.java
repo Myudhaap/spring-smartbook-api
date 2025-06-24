@@ -104,6 +104,18 @@ public class RoleServiceImpl
     }
 
     @Override
+    public Role finByName(String name) {
+        return roleRepository.findByName(name).orElseThrow(
+            () -> new ApplicationException(null, "Role not found", HttpStatus.NOT_FOUND)
+        );
+    }
+
+    @Override
+    public Set<Role> findAllByIds(Set<String> ids) {
+        return roleRepository.findAllByIdIn(ids);
+    }
+
+    @Override
     protected Specification<Role> createPredicate(RestFilter filter) {
         System.out.println("filter: " + filter);
         return (root, query, cb) -> {

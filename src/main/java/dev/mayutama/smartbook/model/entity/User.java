@@ -6,6 +6,7 @@ import dev.mayutama.smartbook.constant.EGender;
 import dev.mayutama.smartbook.constant.EMaritalStatus;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @Table(name = DbPath.MST_USER_SCHEMA)
@@ -13,7 +14,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder(toBuilder = true)
+@SuperBuilder(toBuilder = true)
 public class User extends BaseEntity {
     @Column(name = "fullname", nullable = false)
     private String fullName;

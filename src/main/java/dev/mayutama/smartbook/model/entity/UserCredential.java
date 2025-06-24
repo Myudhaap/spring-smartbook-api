@@ -4,6 +4,7 @@ import dev.mayutama.smartbook.common.entity.BaseEntity;
 import dev.mayutama.smartbook.constant.DbPath;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.util.Set;
 
@@ -13,7 +14,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder(toBuilder = true)
+@SuperBuilder(toBuilder = true)
 public class UserCredential extends BaseEntity {
     @Column(name = "email", nullable = false, unique = true)
     private String email;
@@ -25,7 +26,7 @@ public class UserCredential extends BaseEntity {
     @Builder.Default
     private Boolean isActive = true;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(
             name = DbPath.TRX_USER_CREDENTIAL_ROLE_SCHEMA,
             joinColumns = @JoinColumn(name = "user_credential_id"),
