@@ -1,10 +1,12 @@
 package dev.mayutama.smartbook.service.impl;
 
+import dev.mayutama.smartbook.exception.ApplicationException;
 import dev.mayutama.smartbook.model.entity.AppUser;
 import dev.mayutama.smartbook.model.entity.UserCredential;
 import dev.mayutama.smartbook.repository.UserCredentialRepository;
 import dev.mayutama.smartbook.service.UserCredentialService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -44,5 +46,12 @@ public class UserCredentialServiceImpl implements UserCredentialService {
                 .fullName(userCredential.getUser().getFullName())
                 .roles(userCredential.getRoles())
                 .build();
+    }
+
+    @Override
+    public UserCredential findById(String id) {
+        return userCredentialRepository.findById(id).orElseThrow(
+            () -> new ApplicationException(null, "UserCredential not found", HttpStatus.NOT_FOUND)
+        );
     }
 }

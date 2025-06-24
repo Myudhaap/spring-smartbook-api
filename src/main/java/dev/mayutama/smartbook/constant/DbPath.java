@@ -10,4 +10,5 @@ public class DbPath {
     public static final String TRX_USER_CREDENTIAL_ROLE_SCHEMA = "trx_user_credential_roles";
     public static final String TRX_ROLE_PERMISSION_SCHEMA = "trx_role_permissions";
     public static final String TRX_BOOK_GENRE_SCHEMA = "trx_book_genres";
+    public static final String TRX_REVIEW_SCHEMA = "trx_review";
 }

@@ -8,4 +8,5 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 public interface UserCredentialService extends UserDetailsService {
     AppUser loadUserByUserId(String userId);
     UserCredential addUserCredential(UserCredential userCredential);
+    UserCredential findById(String id);
 }

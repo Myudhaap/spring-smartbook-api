@@ -9,4 +9,5 @@ public class AppPath {
     public static final String USER = API_VERSION_1 + "/users";
     public static final String GENRE = API_VERSION_1 + "/genres";
     public static final String BOOK = API_VERSION_1 + "/books";
+    public static final String REVIEW = API_VERSION_1 + "/reviews";
 }

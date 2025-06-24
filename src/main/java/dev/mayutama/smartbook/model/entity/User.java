@@ -8,6 +8,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
+import java.util.List;
+
 @Entity
 @Table(name = DbPath.MST_USER_SCHEMA)
 @Getter
@@ -37,4 +39,7 @@ public class User extends BaseEntity {
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_credential_id")
     private UserCredential userCredential;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Review> reviews;
 }

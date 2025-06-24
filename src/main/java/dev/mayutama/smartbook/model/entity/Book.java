@@ -5,6 +5,7 @@ import dev.mayutama.smartbook.constant.DbPath;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -37,4 +38,7 @@ public class Book extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "genre_id")
     )
     Set<Genre> genres;
+
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Review> reviews;
 }

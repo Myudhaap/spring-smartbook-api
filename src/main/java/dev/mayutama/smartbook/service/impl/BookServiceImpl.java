@@ -72,6 +72,13 @@ public class BookServiceImpl
     }
 
     @Override
+    public Book findEntityById(String id) {
+        return bookRepository.findById(id).orElseThrow(
+            () -> new ApplicationException(null, "Book not found", HttpStatus.NOT_FOUND)
+        );
+    }
+
+    @Override
     public BookRes create(BookReq req) {
         Set<Genre> genres = genreService.findAllByIds(req.getGenres());
         if (genres.size() != req.getGenres().size()) {
