@@ -39,7 +39,9 @@ public class AuthController {
         LoginRes res = authService.login(req);
         if (clientType.equals(ETypeDevice.WEB.getValue())) {
             CookieUtil.setAuthCookie(response, res.getAccessToken(), res.getRefreshToken());
-            return ResponseUtil.responseSuccess(null, "Login successfully");
+            res.setAccessToken(null);
+            res.setRefreshToken(null);
+            return ResponseUtil.responseSuccess(res, "Login successfully");
         } else {
             return ResponseUtil.responseSuccess(res, "Login successfully");
         }

@@ -67,6 +67,10 @@ public class RoleServiceImpl
     @Override
     @Transactional(rollbackOn = Exception.class)
     public RoleRes create(RoleReq req) {
+        if (!req.getName().contains("ROLE_")) {
+            throw new ApplicationException(null, "role name must have prefix 'ROLE_' and uppercase format", HttpStatus.BAD_REQUEST);
+        }
+
         Set<Permission> permissions = permissionService.findAllByIds(req.getPermissions());
         if (permissions.size() != req.getPermissions().size())
             throw new ApplicationException(null, "Permissions is missing 1 or more",  HttpStatus.BAD_REQUEST);

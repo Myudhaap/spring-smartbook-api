@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Data
 @Builder(toBuilder = true)
 @NoArgsConstructor
@@ -13,4 +15,6 @@ public class LoginRes {
     private String email;
     private String accessToken;
     private String refreshToken;
+    private Set<String> roles;
+    private Set<String> permissions;
 }

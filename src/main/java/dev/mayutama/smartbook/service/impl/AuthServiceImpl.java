@@ -5,10 +5,7 @@ import dev.mayutama.smartbook.model.dto.request.auth.AuthReq;
 import dev.mayutama.smartbook.model.dto.request.auth.LoginReq;
 import dev.mayutama.smartbook.model.dto.response.auth.AuthRes;
 import dev.mayutama.smartbook.model.dto.response.auth.LoginRes;
-import dev.mayutama.smartbook.model.entity.AppUser;
-import dev.mayutama.smartbook.model.entity.Role;
-import dev.mayutama.smartbook.model.entity.User;
-import dev.mayutama.smartbook.model.entity.UserCredential;
+import dev.mayutama.smartbook.model.entity.*;
 import dev.mayutama.smartbook.model.mapper.UserCredentialMapper;
 import dev.mayutama.smartbook.repository.UserCredentialRepository;
 import dev.mayutama.smartbook.security.JwtUtil;
@@ -30,6 +27,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -90,10 +88,26 @@ public class AuthServiceImpl implements AuthService {
             String refreshToken = jwtUtil.generateRefreshToken(user);
             System.out.println(refreshToken);
 
+            UserCredential userCredential = userCredentialRepository.findById(user.getId()).orElseThrow(
+                () -> new ApplicationException(null, "Usercredential not found", HttpStatus.NOT_FOUND)
+            );
+
+            Set<String> roles = new HashSet<>();
+            Set<String> permissions = new HashSet<>();
+            for (Role role : userCredential.getRoles()) {
+                roles.add(role.getName());
+
+                for (Permission permission: role.getPermissions()) {
+                    permissions.add(permission.getName());
+                }
+            }
+
             return LoginRes.builder()
                     .email(user.getEmail())
                     .accessToken(token)
                     .refreshToken(refreshToken)
+                    .roles(roles)
+                    .permissions(permissions)
                     .build();
         } catch (BadCredentialsException e) {
             throw new ApplicationException("Invalid credentials", "Email or password incorrect", HttpStatus.BAD_REQUEST);
