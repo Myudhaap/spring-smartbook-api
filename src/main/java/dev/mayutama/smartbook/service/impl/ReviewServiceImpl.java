@@ -7,10 +7,12 @@ import dev.mayutama.smartbook.common.service.EngineFilterService;
 import dev.mayutama.smartbook.exception.ApplicationException;
 import dev.mayutama.smartbook.model.dto.request.review.ReviewReq;
 import dev.mayutama.smartbook.model.dto.response.book.BookRes;
+import dev.mayutama.smartbook.model.dto.response.dashboard.ActiveUserStatsRes;
 import dev.mayutama.smartbook.model.dto.response.genre.GenreRes;
 import dev.mayutama.smartbook.model.dto.response.review.ReviewRes;
 import dev.mayutama.smartbook.model.entity.*;
 import dev.mayutama.smartbook.model.mapper.ReviewMapper;
+import dev.mayutama.smartbook.model.projection.ActiveUserStats;
 import dev.mayutama.smartbook.repository.ReviewRepository;
 import dev.mayutama.smartbook.service.BookService;
 import dev.mayutama.smartbook.service.ReviewService;
@@ -161,6 +163,17 @@ public class ReviewServiceImpl
             userCredential = userCredentialService.findById(appUser.getId());
         }
         return userCredential;
+    }
+
+    @Override
+    public List<ActiveUserStatsRes> getMostActiveUser(Integer limit) {
+        List<ActiveUserStats> res = reviewRepository.findMostActiveUser(limit);
+        return res.stream()
+                .map((val) -> ActiveUserStatsRes.builder()
+                        .fullName(val.getFullname())
+                        .totalReviews(val.getTotalReviews())
+                        .build()
+                ).toList();
     }
 
     @Override

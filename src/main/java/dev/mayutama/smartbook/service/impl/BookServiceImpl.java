@@ -7,12 +7,14 @@ import dev.mayutama.smartbook.common.service.EngineFilterService;
 import dev.mayutama.smartbook.exception.ApplicationException;
 import dev.mayutama.smartbook.model.dto.request.book.BookReq;
 import dev.mayutama.smartbook.model.dto.response.book.BookRes;
+import dev.mayutama.smartbook.model.dto.response.dashboard.BookRatingSummaryRes;
 import dev.mayutama.smartbook.model.dto.response.genre.GenreRes;
 import dev.mayutama.smartbook.model.entity.Book;
 import dev.mayutama.smartbook.model.entity.Genre;
 import dev.mayutama.smartbook.model.entity.Permission;
 import dev.mayutama.smartbook.model.entity.Role;
 import dev.mayutama.smartbook.model.mapper.BookMapper;
+import dev.mayutama.smartbook.model.projection.BookRatingSummary;
 import dev.mayutama.smartbook.repository.BookRepository;
 import dev.mayutama.smartbook.service.BookService;
 import dev.mayutama.smartbook.service.GenreService;
@@ -163,6 +165,19 @@ public class BookServiceImpl
     }
 
     @Override
+    public List<BookRatingSummaryRes> getTopRatedBooks(Integer limit) {
+        List<BookRatingSummary> res = bookRepository.findTopRated(limit);
+        return res.stream()
+                .map((val) -> BookRatingSummaryRes.builder()
+                        .id(val.getId())
+                        .title(val.getTitle())
+                        .averageRating(val.getAvgRating())
+                        .totalReviews(val.getTotalReviews())
+                        .build()
+                ).toList();
+    }
+
+    @Override
     protected Specification<Book> createSearchPredicate(String search) {
         Long publishedAt;
         try {
@@ -196,6 +211,8 @@ public class BookServiceImpl
                     )
             );
         };
+
+
     }
 
     @Override
