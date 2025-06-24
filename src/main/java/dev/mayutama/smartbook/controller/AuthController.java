@@ -3,10 +3,10 @@ package dev.mayutama.smartbook.controller;
 import dev.mayutama.smartbook.constant.AppPath;
 import dev.mayutama.smartbook.constant.CustomHeader;
 import dev.mayutama.smartbook.constant.ETypeDevice;
-import dev.mayutama.smartbook.model.dto.request.auth.AuthRequest;
-import dev.mayutama.smartbook.model.dto.request.auth.LoginRequest;
-import dev.mayutama.smartbook.model.dto.response.auth.AuthResponse;
-import dev.mayutama.smartbook.model.dto.response.auth.LoginResponse;
+import dev.mayutama.smartbook.model.dto.request.auth.AuthReq;
+import dev.mayutama.smartbook.model.dto.request.auth.LoginReq;
+import dev.mayutama.smartbook.model.dto.response.auth.AuthRes;
+import dev.mayutama.smartbook.model.dto.response.auth.LoginRes;
 import dev.mayutama.smartbook.service.AuthService;
 import dev.mayutama.smartbook.util.CookieUtil;
 import dev.mayutama.smartbook.util.ResponseUtil;
@@ -24,19 +24,19 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(
-            @Valid @RequestBody AuthRequest req
+            @Valid @RequestBody AuthReq req
     ) {
-        AuthResponse res = authService.register(req);
+        AuthRes res = authService.register(req);
         return ResponseUtil.responseSuccess(res, "Success registered");
     }
 
     @PostMapping("/login")
     public ResponseEntity<?> login(
-            @Valid @RequestBody LoginRequest req,
+            @Valid @RequestBody LoginReq req,
             @RequestHeader(value = CustomHeader.X_CLIENT_TYPE, required = false, defaultValue = ETypeDevice.DEFAULT) String clientType,
             HttpServletResponse response
     ) {
-        LoginResponse res = authService.login(req);
+        LoginRes res = authService.login(req);
         if (clientType.equals(ETypeDevice.WEB.getValue())) {
             CookieUtil.setAuthCookie(response, res.getAccessToken(), res.getRefreshToken());
             return ResponseUtil.responseSuccess(null, "Login successfully");
@@ -61,7 +61,7 @@ public class AuthController {
             @CookieValue(value = "refresh_token", required = false) String refreshTokenFromCookie
     ) {
         String refreshToken = refreshTokenFromHeader != null ? refreshTokenFromHeader : refreshTokenFromCookie;
-        LoginResponse res = authService.refreshToken(refreshToken, response);
+        LoginRes res = authService.refreshToken(refreshToken, response);
 
         if (clientType.equals(ETypeDevice.WEB.getValue())) {
             CookieUtil.setAuthCookie(response, res.getAccessToken(), res.getRefreshToken());

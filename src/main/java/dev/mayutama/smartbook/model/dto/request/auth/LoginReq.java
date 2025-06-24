@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class LoginRequest {
+public class LoginReq {
     @NotBlank(message = "Field email is required")
     @Email(message = "Field email pattern is invalid")
     private String email;

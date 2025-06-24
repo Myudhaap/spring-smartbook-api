@@ -17,5 +17,6 @@ public interface UserCredentialRepository extends BaseRepository<UserCredential,
     )
     Optional<UserCredential> findByIdIsActive(@Param("id") String id);
 
-    Optional<UserCredential> findByEmail(String email);
+    Optional<UserCredential> findByEmailAndIsActive(String email, Boolean isActive);
+    Optional<UserCredential> findByUser_Id(String id);
 }

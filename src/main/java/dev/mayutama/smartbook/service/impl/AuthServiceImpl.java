@@ -1,22 +1,19 @@
 package dev.mayutama.smartbook.service.impl;
 
 import dev.mayutama.smartbook.exception.ApplicationException;
-import dev.mayutama.smartbook.model.dto.request.auth.AuthRequest;
-import dev.mayutama.smartbook.model.dto.request.auth.LoginRequest;
-import dev.mayutama.smartbook.model.dto.response.auth.AuthResponse;
-import dev.mayutama.smartbook.model.dto.response.auth.LoginResponse;
-import dev.mayutama.smartbook.model.dto.response.role.RoleRes;
+import dev.mayutama.smartbook.model.dto.request.auth.AuthReq;
+import dev.mayutama.smartbook.model.dto.request.auth.LoginReq;
+import dev.mayutama.smartbook.model.dto.response.auth.AuthRes;
+import dev.mayutama.smartbook.model.dto.response.auth.LoginRes;
 import dev.mayutama.smartbook.model.entity.AppUser;
 import dev.mayutama.smartbook.model.entity.Role;
 import dev.mayutama.smartbook.model.entity.User;
 import dev.mayutama.smartbook.model.entity.UserCredential;
-import dev.mayutama.smartbook.model.mapper.RoleMapper;
 import dev.mayutama.smartbook.model.mapper.UserCredentialMapper;
 import dev.mayutama.smartbook.repository.UserCredentialRepository;
 import dev.mayutama.smartbook.security.JwtUtil;
 import dev.mayutama.smartbook.service.AuthService;
 import dev.mayutama.smartbook.service.RoleService;
-import dev.mayutama.smartbook.service.UserService;
 import dev.mayutama.smartbook.util.CookieUtil;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.transaction.Transactional;
@@ -28,60 +25,63 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
-    private final UserService userService;
     private final RoleService roleService;
     private final UserCredentialRepository userCredentialRepository;
-    private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
 
     private final JwtUtil jwtUtil;
     private final UserCredentialMapper userCredentialMapper;
-    private final RoleMapper roleMapper;
 
     @Transactional(rollbackOn = Exception.class)
     @Override
-    public AuthResponse register(AuthRequest request) {
+    public AuthRes register(AuthReq request) {
         Role role = roleService.finByName("ROLE_USER");
         Set<Role> roles = new HashSet<>();
         roles.add(role);
 
-        UserCredential userCredential = userCredentialMapper.toEntity(request, roles);
-        userCredentialRepository.save(userCredential);
 
         User user = User.builder()
                 .fullName(request.getFullName())
                 .gender(request.getGender())
                 .birthDate(request.getBirthDate())
                 .maritalStatus(request.getMaritalStatus())
-                .userCredential(userCredential)
                 .build();
-        userService.addUserRegister(user);
 
-        return AuthResponse.builder()
+        UserCredential userCredential = userCredentialMapper.toEntity(request, roles);
+
+        registerFromAdmin(user, userCredential);
+
+        return AuthRes.builder()
                 .email(request.getEmail())
                 .build();
     }
 
+    public UserCredential registerFromAdmin(User user, UserCredential userCredential){
+        userCredential.setUser(user);
+        user.setUserCredential(userCredential);
+        return userCredentialRepository.save(userCredential);
+    }
+
     @Override
-    public LoginResponse login(LoginRequest request) {
+    public LoginRes login(LoginReq request) {
         try {
+            System.out.println("TES");
             Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                     request.getEmail(),
                     request.getPassword()
             ));
 
             SecurityContextHolder.getContext().setAuthentication(authentication);
+            System.out.println("TES login");
 
             AppUser user = (AppUser) authentication.getPrincipal();
             System.out.println(user);
@@ -90,7 +90,7 @@ public class AuthServiceImpl implements AuthService {
             String refreshToken = jwtUtil.generateRefreshToken(user);
             System.out.println(refreshToken);
 
-            return LoginResponse.builder()
+            return LoginRes.builder()
                     .email(user.getEmail())
                     .accessToken(token)
                     .refreshToken(refreshToken)
@@ -101,7 +101,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public LoginResponse refreshToken(String refreshToken, HttpServletResponse response) {
+    public LoginRes refreshToken(String refreshToken, HttpServletResponse response) {
         if (StringUtils.isBlank(refreshToken))
             throw new ApplicationException(
                     HttpStatus.NOT_FOUND.name(),
@@ -136,7 +136,7 @@ public class AuthServiceImpl implements AuthService {
                 .build()
         );
 
-        return LoginResponse.builder()
+        return LoginRes.builder()
                 .accessToken(token)
                 .refreshToken(refreshToken)
                 .email(userCredential.getEmail())

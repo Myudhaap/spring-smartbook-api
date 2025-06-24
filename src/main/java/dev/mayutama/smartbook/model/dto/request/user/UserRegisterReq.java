@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder(toBuilder = true)
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserRegisterRequest {
+public class UserRegisterReq {
     private String email;
     private String password;
     private String fullName;

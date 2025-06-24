@@ -14,7 +14,7 @@ import java.util.Set;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserResponse extends BaseResponse {
+public class UserRes extends BaseResponse {
     private String id;
     private String email;
     private String fullName;

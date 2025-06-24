@@ -12,7 +12,7 @@ import java.util.Set;
 @SuperBuilder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserCredentialResponse extends BaseResponse {
+public class UserCredentialRes extends BaseResponse {
     private String id;
     private Set<Role> roles;
     private String email;

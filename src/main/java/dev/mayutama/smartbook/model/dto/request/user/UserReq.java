@@ -5,26 +5,31 @@ import dev.mayutama.smartbook.constant.EMaritalStatus;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Data
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserRequest {
-    @NotBlank(message = "Email is required")
-    @Email(message = "Email pattern is invalid")
+public class UserReq {
+    @NotBlank(message = "Field email is required")
+    @Email(message = "Field email pattern is invalid")
     private String email;
-    @NotBlank(message = "FullName is required")
+    @NotBlank(message = "Field fullName is required")
     private String fullName;
-    @NotNull(message = "Gender is required")
+    @NotNull(message = "Field gender is required")
     private EGender gender;
     private Long birthDate;
-    @NotNull(message = "Marital Status is required")
+    @NotNull(message = "Field maritalStatus is required")
     private EMaritalStatus maritalStatus;
-    @NotNull(message = "Role is required")
-    private String role;
+    @NotNull(message = "Field roles is required")
+    @Size(min = 1, message = "Field roles must contain at least one item")
+    private Set<String> roles;
+    private String password;
 }

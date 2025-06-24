@@ -10,7 +10,7 @@ import lombok.*;
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserRegisterResponse extends BaseResponse {
+public class UserRegisterRes extends BaseResponse {
     private String id;
     private String fullName;
     private EGender gender;

@@ -30,7 +30,11 @@ public class User extends BaseEntity {
     @Column(name = "marital_status", nullable = false)
     private EMaritalStatus maritalStatus;
 
-    @OneToOne
+    @Column(name = "is_active", nullable = false)
+    @Builder.Default
+    private Boolean isActive = true;
+
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_credential_id")
     private UserCredential userCredential;
 }

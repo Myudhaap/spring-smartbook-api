@@ -33,4 +33,7 @@ public class UserCredential extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<Role> roles;
+
+    @OneToOne(mappedBy = "userCredential", cascade = CascadeType.ALL)
+    private User user;
 }
