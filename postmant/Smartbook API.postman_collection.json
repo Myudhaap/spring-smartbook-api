@@ -1,0 +1,4354 @@
+{
+	"info": {
+		"_postman_id": "067ed5c4-f1e7-4164-80f4-ffef582f8a94",
+		"name": "Smartbook API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38733465"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"user1@test.com\",\r\n    \"password\": \"user1\",\r\n    \"gender\": \"MALE\",\r\n    \"fullName\": \"User 1\",\r\n    \"maritalStatus\": \"SINGLE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/auth/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"user3@test.com\",\r\n    \"password\": \"user3\",\r\n    \"gender\": \"MALE\",\r\n    \"fullName\": \"User 3\",\r\n    \"maritalStatus\": \"SINGLE\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/auth/register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 02:19:19 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"Success registered\",\n    \"data\": {\n        \"email\": \"user3@test.com\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Client-Type",
+								"value": "mobile",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"superadmin@mail.com\",\r\n    \"password\": \"superadmin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "superadmin",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Client-Type",
+										"value": "mobile",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"superadmin@mail.com\",\r\n    \"password\": \"superadmin\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/auth/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Set-Cookie",
+									"value": "access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJCYXNlQXBwU3ByaW5nIiwic3ViIjoiZTEzNWI3MWYtMGZiZS00N2MzLTk0N2MtZGMyNjI5ZWZiYWQ3IiwiZXhwIjoxNzUwNzc0NzkwLCJpYXQiOjE3NTA3NzQxOTAsInJvbGUiOlsiUk9MRV9BRE1JTiJdLCJlbWFpbCI6InN1cGVyYWRtaW5AbWFpbC5jb20iLCJmdWxsTmFtZSI6IlN1cGVyYWRtaW4ifQ.ewLqjJG4GlrlXGOaqExVNLdyX77_ng9RDU481ctYF8Y; Max-Age=900; Expires=Tue, 24 Jun 2025 14:24:50 GMT; Path=/; Secure; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJCYXNlQXBwU3ByaW5nIiwic3ViIjoiZTEzNWI3MWYtMGZiZS00N2MzLTk0N2MtZGMyNjI5ZWZiYWQ3IiwiZXhwIjoxNzUwNzk0MzUwLCJpYXQiOjE3NTA3NzQxOTAsInJvbGUiOlsiUk9MRV9BRE1JTiJdLCJlbWFpbCI6InN1cGVyYWRtaW5AbWFpbC5jb20iLCJmdWxsTmFtZSI6IlN1cGVyYWRtaW4ifQ.jIe37Eb6s-krwaOtRvxrszptZRF46sMuCAaXcPXzQuM; Max-Age=1209600; Expires=Tue, 08 Jul 2025 14:09:50 GMT; Path=/; Secure; HttpOnly"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 14:09:50 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"Login successfully\",\n    \"data\": null\n}"
+						},
+						{
+							"name": "login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Client-Type",
+										"value": "mobile",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"superadmin@mail.com\",\r\n    \"password\": \"superadmin\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/auth/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Set-Cookie",
+									"value": "access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJCYXNlQXBwU3ByaW5nIiwic3ViIjoiZTEzNWI3MWYtMGZiZS00N2MzLTk0N2MtZGMyNjI5ZWZiYWQ3IiwiZXhwIjoxNzUwNzc1Njg4LCJpYXQiOjE3NTA3NzUwODgsInJvbGUiOlsiUk9MRV9BRE1JTiJdLCJlbWFpbCI6InN1cGVyYWRtaW5AbWFpbC5jb20iLCJmdWxsTmFtZSI6IlN1cGVyYWRtaW4ifQ.X5bXedNZ_zhxr1XWhUuEN8b7Z5Zrxuly23NUTMkziVE; Max-Age=900; Expires=Tue, 24 Jun 2025 14:39:48 GMT; Path=/; Secure; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJCYXNlQXBwU3ByaW5nIiwic3ViIjoiZTEzNWI3MWYtMGZiZS00N2MzLTk0N2MtZGMyNjI5ZWZiYWQ3IiwiZXhwIjoxNzUwNzk1MjQ4LCJpYXQiOjE3NTA3NzUwODgsInJvbGUiOlsiUk9MRV9BRE1JTiJdLCJlbWFpbCI6InN1cGVyYWRtaW5AbWFpbC5jb20iLCJmdWxsTmFtZSI6IlN1cGVyYWRtaW4ifQ.YZSsvGgLRAdOaBB7lmTM-YtsDBu0KA4IYsfnxSEl-Ic; Max-Age=1209600; Expires=Tue, 08 Jul 2025 14:24:48 GMT; Path=/; Secure; HttpOnly"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 14:24:48 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"Login successfully\",\n    \"data\": {\n        \"email\": \"superadmin@mail.com\",\n        \"accessToken\": null,\n        \"refreshToken\": null,\n        \"roles\": [\n            \"ROLE_ADMIN\"\n        ],\n        \"permissions\": [\n            \"PERMIT_ALL\"\n        ]\n    }\n}"
+						},
+						{
+							"name": "login device mobile",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Client-Type",
+										"value": "mobile",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"superadmin@mail.com\",\r\n    \"password\": \"superadmin\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/auth/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 14:25:19 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"Login successfully\",\n    \"data\": {\n        \"email\": \"superadmin@mail.com\",\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJCYXNlQXBwU3ByaW5nIiwic3ViIjoiZTEzNWI3MWYtMGZiZS00N2MzLTk0N2MtZGMyNjI5ZWZiYWQ3IiwiZXhwIjoxNzUwNzc1NzE5LCJpYXQiOjE3NTA3NzUxMTksInJvbGUiOlsiUk9MRV9BRE1JTiJdLCJlbWFpbCI6InN1cGVyYWRtaW5AbWFpbC5jb20iLCJmdWxsTmFtZSI6IlN1cGVyYWRtaW4ifQ.A0TWZ_h7eXR8AaPct6O1x_4rgC66EaDH84vQhZjCsxI\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJCYXNlQXBwU3ByaW5nIiwic3ViIjoiZTEzNWI3MWYtMGZiZS00N2MzLTk0N2MtZGMyNjI5ZWZiYWQ3IiwiZXhwIjoxNzUwNzk1Mjc5LCJpYXQiOjE3NTA3NzUxMTksInJvbGUiOlsiUk9MRV9BRE1JTiJdLCJlbWFpbCI6InN1cGVyYWRtaW5AbWFpbC5jb20iLCJmdWxsTmFtZSI6IlN1cGVyYWRtaW4ifQ.SArrs4YC_FOplEPtw3t-3bzmlElGYG8oG9WuF1ycNrY\",\n        \"roles\": [\n            \"ROLE_ADMIN\"\n        ],\n        \"permissions\": [\n            \"PERMIT_ALL\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "refresh token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/auth/refresh-token",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"refresh-token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/auth/refresh-token",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"refresh-token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Set-Cookie",
+									"value": "access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJCYXNlQXBwU3ByaW5nIiwic3ViIjoiYjIxMTQzODgtNmY2NC00ZjU2LTk4ZDgtNDZiMGNkNjhiZWM2IiwiZXhwIjoxNzUwNzMyOTg3LCJpYXQiOjE3NTA3MzIzODcsInJvbGUiOlsiUk9MRV9VU0VSIl0sImVtYWlsIjoidXNlcjNAdGVzdC5jb20iLCJmdWxsTmFtZSI6IlVzZXIgMyJ9.i-Va5MXdkhNe3mfOXqnRtCQ3b3UtbFpFS9bmDklCAI0; Max-Age=900; Expires=Tue, 24 Jun 2025 02:48:07 GMT; Path=/; Secure; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJCYXNlQXBwU3ByaW5nIiwic3ViIjoiYjIxMTQzODgtNmY2NC00ZjU2LTk4ZDgtNDZiMGNkNjhiZWM2IiwiZXhwIjoxNzUwNzUyNDU3LCJpYXQiOjE3NTA3MzIyOTcsInJvbGUiOlsiUk9MRV9VU0VSIl0sImVtYWlsIjoidXNlcjNAdGVzdC5jb20iLCJmdWxsTmFtZSI6IlVzZXIgMyJ9.CjkNCBm_9Q2AIOL4sV_kYs-BK5XZ095uKvYJ1lr8CEs; Max-Age=1209600; Expires=Tue, 08 Jul 2025 02:33:07 GMT; Path=/; Secure; HttpOnly"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 02:33:07 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"Refresh successfully\",\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/auth/logout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/auth/logout",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Set-Cookie",
+									"value": "access_token=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; Secure; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "refresh_token=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; Secure; HttpOnly"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 02:34:03 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"Successfully logout\",\n    \"data\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Roles",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/roles?page=1&size=10&sort=-createdAt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"roles"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "search",
+									"value": "USER",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "-createdAt"
+								},
+								{
+									"key": "filter%5Bname%5D",
+									"value": "ROLE_DUMMY_4",
+									"disabled": true
+								},
+								{
+									"key": "filter%5Brole.name%5D",
+									"value": "READ_ALL",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/roles?page=1&size=10&sort=-createdAt&filter%5Bname%5D=ROLE_DUMMY_4&filter%5Brole.name%5D=READ_ALL",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "10"
+										},
+										{
+											"key": "search",
+											"value": "READ",
+											"disabled": true
+										},
+										{
+											"key": "sort",
+											"value": "-createdAt"
+										},
+										{
+											"key": "filter%5Bname%5D",
+											"value": "ROLE_DUMMY_4"
+										},
+										{
+											"key": "filter%5Brole.name%5D",
+											"value": "READ_ALL"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Jun 2025 13:42:50 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"Success get all role\",\n    \"data\": [\n        {\n            \"createdAt\": \"2025-06-23T20:42:09.434136\",\n            \"updatedAt\": \"2025-06-23T20:42:09.434136\",\n            \"createdBy\": \"system\",\n            \"updatedBy\": \"system\",\n            \"id\": \"43a472d1-c5c7-4bd8-aef9-5060a9e9370d\",\n            \"name\": \"ROLE_DUMMY_4\",\n            \"permissions\": [\n                {\n                    \"createdAt\": \"2025-06-23T15:46:04.799811\",\n                    \"updatedAt\": \"2025-06-23T15:46:04.799811\",\n                    \"createdBy\": \"system\",\n                    \"updatedBy\": \"system\",\n                    \"id\": \"77d15540-cd90-49f2-bae3-abfb682f6b23\",\n                    \"name\": \"DUMMY\"\n                },\n                {\n                    \"createdAt\": \"2025-06-23T20:41:46.469408\",\n                    \"updatedAt\": \"2025-06-23T20:41:46.469408\",\n                    \"createdBy\": \"system\",\n                    \"updatedBy\": \"system\",\n                    \"id\": \"5e202eb1-a629-4f9c-a733-fc9b53aee3da\",\n                    \"name\": \"READ_ALL\"\n                }\n            ]\n        }\n    ],\n    \"paging\": {\n        \"currentPage\": 1,\n        \"size\": 10,\n        \"totalPages\": 1,\n        \"totalElements\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/roles/43a472d1-c5c7-4bd8-aef9-5060a9e9370d",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"roles",
+								"43a472d1-c5c7-4bd8-aef9-5060a9e9370d"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/roles/43a472d1-c5c7-4bd8-aef9-5060a9e9370d",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles",
+										"43a472d1-c5c7-4bd8-aef9-5060a9e9370d"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Jun 2025 13:48:48 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"Success get by id: 43a472d1-c5c7-4bd8-aef9-5060a9e9370d role\",\n    \"data\": {\n        \"createdAt\": \"2025-06-23T20:42:09.434136\",\n        \"updatedAt\": \"2025-06-23T20:42:09.434136\",\n        \"createdBy\": \"system\",\n        \"updatedBy\": \"system\",\n        \"id\": \"43a472d1-c5c7-4bd8-aef9-5060a9e9370d\",\n        \"name\": \"ROLE_DUMMY_4\",\n        \"permissions\": [\n            {\n                \"createdAt\": \"2025-06-23T15:46:04.799811\",\n                \"updatedAt\": \"2025-06-23T15:46:04.799811\",\n                \"createdBy\": \"system\",\n                \"updatedBy\": \"system\",\n                \"id\": \"77d15540-cd90-49f2-bae3-abfb682f6b23\",\n                \"name\": \"DUMMY\"\n            },\n            {\n                \"createdAt\": \"2025-06-23T20:41:46.469408\",\n                \"updatedAt\": \"2025-06-23T20:41:46.469408\",\n                \"createdBy\": \"system\",\n                \"updatedBy\": \"system\",\n                \"id\": \"5e202eb1-a629-4f9c-a733-fc9b53aee3da\",\n                \"name\": \"READ_ALL\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ROLE_DUMMY\",\r\n    \"permissions\": [\"7eb2beb2-7d4e-4541-9cbf-87a0361f8464\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/roles",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"roles"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"ROLE_DUMMY_4\",\r\n    \"permissions\": [\"77d15540-cd90-49f2-bae3-abfb682f6b23\", \"5e202eb1-a629-4f9c-a733-fc9b53aee3da\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/roles",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Jun 2025 13:42:09 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"message\": \"Success create role\",\n    \"data\": {\n        \"createdAt\": \"2025-06-23T20:42:09.4341364\",\n        \"updatedAt\": \"2025-06-23T20:42:09.4341364\",\n        \"createdBy\": \"system\",\n        \"updatedBy\": \"system\",\n        \"id\": \"43a472d1-c5c7-4bd8-aef9-5060a9e9370d\",\n        \"name\": \"ROLE_DUMMY_4\",\n        \"permissions\": [\n            {\n                \"createdAt\": \"2025-06-23T15:46:04.799811\",\n                \"updatedAt\": \"2025-06-23T15:46:04.799811\",\n                \"createdBy\": \"system\",\n                \"updatedBy\": \"system\",\n                \"id\": \"77d15540-cd90-49f2-bae3-abfb682f6b23\",\n                \"name\": \"DUMMY\"\n            },\n            {\n                \"createdAt\": \"2025-06-23T20:41:46.469408\",\n                \"updatedAt\": \"2025-06-23T20:41:46.469408\",\n                \"createdBy\": \"system\",\n                \"updatedBy\": \"system\",\n                \"id\": \"5e202eb1-a629-4f9c-a733-fc9b53aee3da\",\n                \"name\": \"READ_ALL\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ROLE_DUMMY_4\",\r\n    \"permissions\": [\"5e202eb1-a629-4f9c-a733-fc9b53aee3da\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/roles/43a472d1-c5c7-4bd8-aef9-5060a9e9370d",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"roles",
+								"43a472d1-c5c7-4bd8-aef9-5060a9e9370d"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"ROLE_DUMMY_4\",\r\n    \"permissions\": [\"5e202eb1-a629-4f9c-a733-fc9b53aee3da\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/roles/43a472d1-c5c7-4bd8-aef9-5060a9e9370d",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles",
+										"43a472d1-c5c7-4bd8-aef9-5060a9e9370d"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Jun 2025 13:49:47 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"message\": \"Success update role\",\n    \"data\": {\n        \"createdAt\": \"2025-06-23T20:42:09.434136\",\n        \"updatedAt\": \"2025-06-23T20:49:47.4816422\",\n        \"createdBy\": \"system\",\n        \"updatedBy\": \"system\",\n        \"id\": \"43a472d1-c5c7-4bd8-aef9-5060a9e9370d\",\n        \"name\": \"ROLE_DUMMY_4\",\n        \"permissions\": [\n            {\n                \"createdAt\": \"2025-06-23T20:41:46.469408\",\n                \"updatedAt\": \"2025-06-23T20:41:46.469408\",\n                \"createdBy\": \"system\",\n                \"updatedBy\": \"system\",\n                \"id\": \"5e202eb1-a629-4f9c-a733-fc9b53aee3da\",\n                \"name\": \"READ_ALL\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/roles/5672afa0-7e50-416c-aa2c-78712b0b5fe3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"roles",
+								"5672afa0-7e50-416c-aa2c-78712b0b5fe3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/roles/5672afa0-7e50-416c-aa2c-78712b0b5fe3",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles",
+										"5672afa0-7e50-416c-aa2c-78712b0b5fe3"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Jun 2025 13:51:49 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"message\": \"Success delete role\",\n    \"data\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/users?page=1&size=10&sort=-createdAt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "search",
+									"value": "987998781",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "-createdAt"
+								},
+								{
+									"key": "filter%5BfullName%5D",
+									"value": "user 12",
+									"disabled": true
+								},
+								{
+									"key": "filter%5Bgender%5D",
+									"value": "male",
+									"disabled": true
+								},
+								{
+									"key": "filter%5BbirthDate%5D",
+									"value": "987998781",
+									"disabled": true
+								},
+								{
+									"key": "filter%5BmaritalStatus%5D",
+									"value": "single",
+									"disabled": true
+								},
+								{
+									"key": "filter%5BuserCredential.email%5D",
+									"value": "user12@test.com",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get all",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/users?page=1&size=10&sort=-createdAt&filter%5BfullName%5D=user 12&filter%5Bgender%5D=male&filter%5BbirthDate%5D=987998781&filter%5BmaritalStatus%5D=single&filter%5BuserCredential.email%5D=user12@test.com",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "10"
+										},
+										{
+											"key": "search",
+											"value": "987998781",
+											"disabled": true
+										},
+										{
+											"key": "sort",
+											"value": "-createdAt"
+										},
+										{
+											"key": "filter%5BfullName%5D",
+											"value": "user 12"
+										},
+										{
+											"key": "filter%5Bgender%5D",
+											"value": "male"
+										},
+										{
+											"key": "filter%5BbirthDate%5D",
+											"value": "987998781"
+										},
+										{
+											"key": "filter%5BmaritalStatus%5D",
+											"value": "single"
+										},
+										{
+											"key": "filter%5BuserCredential.email%5D",
+											"value": "user12@test.com"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 04:44:53 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"Success get all user\",\n    \"data\": [\n        {\n            \"createdAt\": \"2025-06-24T11:33:09.783023\",\n            \"updatedAt\": \"2025-06-24T11:33:09.783023\",\n            \"createdBy\": \"user1@test.com\",\n            \"updatedBy\": \"user1@test.com\",\n            \"id\": \"90f8a9a7-5e43-43a5-af26-893abb0a20e0\",\n            \"email\": \"user12@test.com\",\n            \"fullName\": \"User 12\",\n            \"gender\": \"MALE\",\n            \"birthDate\": 987998781,\n            \"maritalStatus\": \"SINGLE\",\n            \"isActive\": null,\n            \"roles\": [\n                {\n                    \"createdAt\": \"2025-06-24T10:56:47.234353\",\n                    \"updatedAt\": \"2025-06-24T10:56:47.234353\",\n                    \"createdBy\": \"system\",\n                    \"updatedBy\": \"system\",\n                    \"id\": \"2ed12713-0ac9-43cb-af67-862da0156c74\",\n                    \"name\": \"ROLE_USER\",\n                    \"permissions\": [\n                        {\n                            \"createdAt\": \"2025-06-24T10:56:47.059354\",\n                            \"updatedAt\": \"2025-06-24T10:56:47.059354\",\n                            \"createdBy\": \"system\",\n                            \"updatedBy\": \"system\",\n                            \"id\": \"95f24e0c-aec4-4ad7-82cd-490a8946e4e8\",\n                            \"name\": \"READ_ALL\"\n                        },\n                        {\n                            \"createdAt\": \"2025-06-24T10:56:47.076321\",\n                            \"updatedAt\": \"2025-06-24T10:56:47.076321\",\n                            \"createdBy\": \"system\",\n                            \"updatedBy\": \"system\",\n                            \"id\": \"d07c13c2-58af-4281-933d-849a7eef4c57\",\n                            \"name\": \"ADD_REVIEW\"\n                        },\n                        {\n                            \"createdAt\": \"2025-06-24T10:56:47.065318\",\n                            \"updatedAt\": \"2025-06-24T10:56:47.065318\",\n                            \"createdBy\": \"system\",\n                            \"updatedBy\": \"system\",\n                            \"id\": \"2a40ae2f-5f7c-42de-afc5-8208a79054c6\",\n                            \"name\": \"DELETE_ALL\"\n                        },\n                        {\n                            \"createdAt\": \"2025-06-24T10:56:47.062316\",\n                            \"updatedAt\": \"2025-06-24T10:56:47.062316\",\n                            \"createdBy\": \"system\",\n                            \"updatedBy\": \"system\",\n                            \"id\": \"a26e26f0-b421-418c-ad40-a88fb0dd3c64\",\n                            \"name\": \"UPDATE_ALL\"\n                        },\n                        {\n                            \"createdAt\": \"2025-06-24T10:56:47.070313\",\n                            \"updatedAt\": \"2025-06-24T10:56:47.070313\",\n                            \"createdBy\": \"system\",\n                            \"updatedBy\": \"system\",\n                            \"id\": \"8f0f1776-3a7e-4a6d-bdda-12ea18bec026\",\n                            \"name\": \"CREATE_ALL\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ],\n    \"paging\": {\n        \"currentPage\": 1,\n        \"size\": 10,\n        \"totalPages\": 1,\n        \"totalElements\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/users/4c9378fe-64fd-49af-86ec-43b78e1bdd68",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"4c9378fe-64fd-49af-86ec-43b78e1bdd68"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/users/4c9378fe-64fd-49af-86ec-43b78e1bdd68",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"4c9378fe-64fd-49af-86ec-43b78e1bdd68"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 04:02:10 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"Success get by id: 4c9378fe-64fd-49af-86ec-43b78e1bdd68 user\",\n    \"data\": {\n        \"createdAt\": \"2025-06-24T10:57:56.282594\",\n        \"updatedAt\": \"2025-06-24T10:57:56.282594\",\n        \"createdBy\": \"system\",\n        \"updatedBy\": \"system\",\n        \"id\": \"4c9378fe-64fd-49af-86ec-43b78e1bdd68\",\n        \"email\": \"user1@test.com\",\n        \"fullName\": \"User 1\",\n        \"gender\": \"MALE\",\n        \"birthDate\": null,\n        \"maritalStatus\": \"SINGLE\",\n        \"isActive\": null,\n        \"roles\": [\n            {\n                \"createdAt\": \"2025-06-24T10:56:47.234353\",\n                \"updatedAt\": \"2025-06-24T10:56:47.234353\",\n                \"createdBy\": \"system\",\n                \"updatedBy\": \"system\",\n                \"id\": \"2ed12713-0ac9-43cb-af67-862da0156c74\",\n                \"name\": \"ROLE_USER\",\n                \"permissions\": [\n                    {\n                        \"createdAt\": \"2025-06-24T10:56:47.059354\",\n                        \"updatedAt\": \"2025-06-24T10:56:47.059354\",\n                        \"createdBy\": \"system\",\n                        \"updatedBy\": \"system\",\n                        \"id\": \"95f24e0c-aec4-4ad7-82cd-490a8946e4e8\",\n                        \"name\": \"READ_ALL\"\n                    },\n                    {\n                        \"createdAt\": \"2025-06-24T10:56:47.076321\",\n                        \"updatedAt\": \"2025-06-24T10:56:47.076321\",\n                        \"createdBy\": \"system\",\n                        \"updatedBy\": \"system\",\n                        \"id\": \"d07c13c2-58af-4281-933d-849a7eef4c57\",\n                        \"name\": \"ADD_REVIEW\"\n                    },\n                    {\n                        \"createdAt\": \"2025-06-24T10:56:47.065318\",\n                        \"updatedAt\": \"2025-06-24T10:56:47.065318\",\n                        \"createdBy\": \"system\",\n                        \"updatedBy\": \"system\",\n                        \"id\": \"2a40ae2f-5f7c-42de-afc5-8208a79054c6\",\n                        \"name\": \"DELETE_ALL\"\n                    },\n                    {\n                        \"createdAt\": \"2025-06-24T10:56:47.062316\",\n                        \"updatedAt\": \"2025-06-24T10:56:47.062316\",\n                        \"createdBy\": \"system\",\n                        \"updatedBy\": \"system\",\n                        \"id\": \"a26e26f0-b421-418c-ad40-a88fb0dd3c64\",\n                        \"name\": \"UPDATE_ALL\"\n                    },\n                    {\n                        \"createdAt\": \"2025-06-24T10:56:47.070313\",\n                        \"updatedAt\": \"2025-06-24T10:56:47.070313\",\n                        \"createdBy\": \"system\",\n                        \"updatedBy\": \"system\",\n                        \"id\": \"8f0f1776-3a7e-4a6d-bdda-12ea18bec026\",\n                        \"name\": \"CREATE_ALL\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"user12@test.com\",\r\n    \"fullName\": \"User 12\",\r\n    \"gender\": \"MALE\",\r\n    \"maritalStatus\": \"SINGLE\",\r\n    \"roles\": [\"2ed12713-0ac9-43cb-af67-862da0156c74\"],\r\n    \"birthDate\": 987998781,\r\n    \"password\": \"user12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"user10@tes.com\",\r\n    \"fullName\": \"User 10\",\r\n    \"gender\": \"MALE\",\r\n    \"maritalStatus\": \"SINGLE\",\r\n    \"roles\": [\"2ed12713-0ac9-43cb-af67-862da0156c74\"],\r\n    \"password\": \"user10\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 04:05:08 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"message\": \"Success create user\",\n    \"data\": {\n        \"createdAt\": \"2025-06-24T11:05:08.6201969\",\n        \"updatedAt\": \"2025-06-24T11:05:08.6201969\",\n        \"createdBy\": \"user1@test.com\",\n        \"updatedBy\": \"user1@test.com\",\n        \"id\": \"4fe39daa-c431-4e0d-9802-44a26e700fe8\",\n        \"email\": \"user10@tes.com\",\n        \"fullName\": \"User 10\",\n        \"gender\": \"MALE\",\n        \"birthDate\": null,\n        \"maritalStatus\": \"SINGLE\",\n        \"isActive\": null,\n        \"roles\": [\n            {\n                \"createdAt\": \"2025-06-24T10:56:47.234353\",\n                \"updatedAt\": \"2025-06-24T10:56:47.234353\",\n                \"createdBy\": \"system\",\n                \"updatedBy\": \"system\",\n                \"id\": \"2ed12713-0ac9-43cb-af67-862da0156c74\",\n                \"name\": \"ROLE_USER\",\n                \"permissions\": [\n                    {\n                        \"createdAt\": \"2025-06-24T10:56:47.059354\",\n                        \"updatedAt\": \"2025-06-24T10:56:47.059354\",\n                        \"createdBy\": \"system\",\n                        \"updatedBy\": \"system\",\n                        \"id\": \"95f24e0c-aec4-4ad7-82cd-490a8946e4e8\",\n                        \"name\": \"READ_ALL\"\n                    },\n                    {\n                        \"createdAt\": \"2025-06-24T10:56:47.076321\",\n                        \"updatedAt\": \"2025-06-24T10:56:47.076321\",\n                        \"createdBy\": \"system\",\n                        \"updatedBy\": \"system\",\n                        \"id\": \"d07c13c2-58af-4281-933d-849a7eef4c57\",\n                        \"name\": \"ADD_REVIEW\"\n                    },\n                    {\n                        \"createdAt\": \"2025-06-24T10:56:47.065318\",\n                        \"updatedAt\": \"2025-06-24T10:56:47.065318\",\n                        \"createdBy\": \"system\",\n                        \"updatedBy\": \"system\",\n                        \"id\": \"2a40ae2f-5f7c-42de-afc5-8208a79054c6\",\n                        \"name\": \"DELETE_ALL\"\n                    },\n                    {\n                        \"createdAt\": \"2025-06-24T10:56:47.062316\",\n                        \"updatedAt\": \"2025-06-24T10:56:47.062316\",\n                        \"createdBy\": \"system\",\n                        \"updatedBy\": \"system\",\n                        \"id\": \"a26e26f0-b421-418c-ad40-a88fb0dd3c64\",\n                        \"name\": \"UPDATE_ALL\"\n                    },\n                    {\n                        \"createdAt\": \"2025-06-24T10:56:47.070313\",\n                        \"updatedAt\": \"2025-06-24T10:56:47.070313\",\n                        \"createdBy\": \"system\",\n                        \"updatedBy\": \"system\",\n                        \"id\": \"8f0f1776-3a7e-4a6d-bdda-12ea18bec026\",\n                        \"name\": \"CREATE_ALL\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"user10Update@tes.com\",\r\n    \"fullName\": \"User 10 Update\",\r\n    \"gender\": \"MALE\",\r\n    \"maritalStatus\": \"SINGLE\",\r\n    \"roles\": [\"2ed12713-0ac9-43cb-af67-862da0156c74\"],\r\n    \"birthDate\": 987998781\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/users/4fe39daa-c431-4e0d-9802-44a26e700fe8",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"4fe39daa-c431-4e0d-9802-44a26e700fe8"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"user10Update@tes.com\",\r\n    \"fullName\": \"User 10 Update\",\r\n    \"gender\": \"MALE\",\r\n    \"maritalStatus\": \"SINGLE\",\r\n    \"roles\": [\"2ed12713-0ac9-43cb-af67-862da0156c74\"],\r\n    \"birthDate\": 987998781\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/users/4fe39daa-c431-4e0d-9802-44a26e700fe8",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"4fe39daa-c431-4e0d-9802-44a26e700fe8"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 04:10:26 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"message\": \"Success update user\",\n    \"data\": {\n        \"createdAt\": \"2025-06-24T11:05:08.620197\",\n        \"updatedAt\": \"2025-06-24T11:10:26.0672477\",\n        \"createdBy\": \"user1@test.com\",\n        \"updatedBy\": \"user1@test.com\",\n        \"id\": \"4fe39daa-c431-4e0d-9802-44a26e700fe8\",\n        \"email\": \"user10Update@tes.com\",\n        \"fullName\": \"User 10 Update\",\n        \"gender\": \"MALE\",\n        \"birthDate\": 987998781,\n        \"maritalStatus\": \"SINGLE\",\n        \"isActive\": null,\n        \"roles\": [\n            {\n                \"createdAt\": \"2025-06-24T10:56:47.234353\",\n                \"updatedAt\": \"2025-06-24T10:56:47.234353\",\n                \"createdBy\": \"system\",\n                \"updatedBy\": \"system\",\n                \"id\": \"2ed12713-0ac9-43cb-af67-862da0156c74\",\n                \"name\": \"ROLE_USER\",\n                \"permissions\": [\n                    {\n                        \"createdAt\": \"2025-06-24T10:56:47.059354\",\n                        \"updatedAt\": \"2025-06-24T10:56:47.059354\",\n                        \"createdBy\": \"system\",\n                        \"updatedBy\": \"system\",\n                        \"id\": \"95f24e0c-aec4-4ad7-82cd-490a8946e4e8\",\n                        \"name\": \"READ_ALL\"\n                    },\n                    {\n                        \"createdAt\": \"2025-06-24T10:56:47.065318\",\n                        \"updatedAt\": \"2025-06-24T10:56:47.065318\",\n                        \"createdBy\": \"system\",\n                        \"updatedBy\": \"system\",\n                        \"id\": \"2a40ae2f-5f7c-42de-afc5-8208a79054c6\",\n                        \"name\": \"DELETE_ALL\"\n                    },\n                    {\n                        \"createdAt\": \"2025-06-24T10:56:47.076321\",\n                        \"updatedAt\": \"2025-06-24T10:56:47.076321\",\n                        \"createdBy\": \"system\",\n                        \"updatedBy\": \"system\",\n                        \"id\": \"d07c13c2-58af-4281-933d-849a7eef4c57\",\n                        \"name\": \"ADD_REVIEW\"\n                    },\n                    {\n                        \"createdAt\": \"2025-06-24T10:56:47.062316\",\n                        \"updatedAt\": \"2025-06-24T10:56:47.062316\",\n                        \"createdBy\": \"system\",\n                        \"updatedBy\": \"system\",\n                        \"id\": \"a26e26f0-b421-418c-ad40-a88fb0dd3c64\",\n                        \"name\": \"UPDATE_ALL\"\n                    },\n                    {\n                        \"createdAt\": \"2025-06-24T10:56:47.070313\",\n                        \"updatedAt\": \"2025-06-24T10:56:47.070313\",\n                        \"createdBy\": \"system\",\n                        \"updatedBy\": \"system\",\n                        \"id\": \"8f0f1776-3a7e-4a6d-bdda-12ea18bec026\",\n                        \"name\": \"CREATE_ALL\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/users/4fe39daa-c431-4e0d-9802-44a26e700fe8",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"4fe39daa-c431-4e0d-9802-44a26e700fe8"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/users/4fe39daa-c431-4e0d-9802-44a26e700fe8",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"4fe39daa-c431-4e0d-9802-44a26e700fe8"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 04:14:30 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"message\": \"Success delete user\",\n    \"data\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Permissions",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/permissions?page=1&size=10&filter%5Bname%5D=READ_ALL&search=READ&sort=-createdAt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"permissions"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "filter%5Bname%5D",
+									"value": "READ_ALL"
+								},
+								{
+									"key": "search",
+									"value": "READ"
+								},
+								{
+									"key": "sort",
+									"value": "-createdAt"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/permissions?page=1&size=10&filter%5Bname%5D=READ_ALL&sort=-createdAt",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"permissions"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "10"
+										},
+										{
+											"key": "filter%5Bname%5D",
+											"value": "READ_ALL"
+										},
+										{
+											"key": "search",
+											"value": "READ",
+											"disabled": true
+										},
+										{
+											"key": "sort",
+											"value": "-createdAt"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Jun 2025 08:10:34 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"Success get all permission\",\n    \"data\": [\n        {\n            \"createdAt\": \"2025-06-23T14:26:07.92868\",\n            \"updatedAt\": \"2025-06-23T14:26:07.92868\",\n            \"createdBy\": \"system\",\n            \"updatedBy\": \"system\",\n            \"id\": \"af47b599-7505-44b8-a4f0-5469b4de3fd4\",\n            \"name\": \"READ_ALL\"\n        }\n    ],\n    \"paging\": {\n        \"currentPage\": 1,\n        \"size\": 10,\n        \"totalPages\": 1,\n        \"totalElements\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/permissions/77d15540-cd90-49f2-bae3-abfb682f6b23",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"permissions",
+								"77d15540-cd90-49f2-bae3-abfb682f6b23"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "READ",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/permissions/f3fe4f20-4ac3-400e-82c9-1121ac8c6af4",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"permissions",
+										"f3fe4f20-4ac3-400e-82c9-1121ac8c6af4"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "READ",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Jun 2025 08:28:00 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"Success get by id: f3fe4f20-4ac3-400e-82c9-1121ac8c6af4 permission\",\n    \"data\": {\n        \"createdAt\": \"2025-06-23T15:27:33.423545\",\n        \"updatedAt\": \"2025-06-23T15:27:33.423545\",\n        \"createdBy\": \"system\",\n        \"updatedBy\": \"system\",\n        \"id\": \"f3fe4f20-4ac3-400e-82c9-1121ac8c6af4\",\n        \"name\": \"DUMMY\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"READ_ALL\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/permissions",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"permissions"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"DUMMY\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/permissions",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"permissions"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Jun 2025 08:27:33 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"message\": \"Success create permission\",\n    \"data\": {\n        \"createdAt\": \"2025-06-23T15:27:33.4235446\",\n        \"updatedAt\": \"2025-06-23T15:27:33.4235446\",\n        \"createdBy\": \"system\",\n        \"updatedBy\": \"system\",\n        \"id\": \"f3fe4f20-4ac3-400e-82c9-1121ac8c6af4\",\n        \"name\": \"DUMMY\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"DUMMY UPDATE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/permissions/b8dace85-6700-42fe-a089-c4b93978f433",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"permissions",
+								"b8dace85-6700-42fe-a089-c4b93978f433"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"DUMMY UPDATE\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/permissions/f3fe4f20-4ac3-400e-82c9-1121ac8c6af4",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"permissions",
+										"f3fe4f20-4ac3-400e-82c9-1121ac8c6af4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Jun 2025 08:29:24 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"Success update permission\",\n    \"data\": {\n        \"createdAt\": \"2025-06-23T15:27:33.423545\",\n        \"updatedAt\": \"2025-06-23T15:29:24.6957839\",\n        \"createdBy\": \"system\",\n        \"updatedBy\": \"system\",\n        \"id\": \"f3fe4f20-4ac3-400e-82c9-1121ac8c6af4\",\n        \"name\": \"DUMMY UPDATE\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/permissions/b8dace85-6700-42fe-a089-c4b93978f433",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"permissions",
+								"b8dace85-6700-42fe-a089-c4b93978f433"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/permissions/f3fe4f20-4ac3-400e-82c9-1121ac8c6af4",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"permissions",
+										"f3fe4f20-4ac3-400e-82c9-1121ac8c6af4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 23 Jun 2025 08:31:22 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"Success delete permission\",\n    \"data\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Genres",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/genres?page=1&size=10&sort=-createdAt&filter%5Bname%5D=&filter%5Bdescription%5D=&search=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"genres"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "sort",
+									"value": "-createdAt"
+								},
+								{
+									"key": "filter%5Bname%5D",
+									"value": ""
+								},
+								{
+									"key": "filter%5Bdescription%5D",
+									"value": ""
+								},
+								{
+									"key": "search",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/genres?page=1&size=10&sort=-createdAt&filter%5Bname%5D=horror&filter%5Bdescription%5D=&search=horror",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"genres"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "10"
+										},
+										{
+											"key": "sort",
+											"value": "-createdAt"
+										},
+										{
+											"key": "filter%5Bname%5D",
+											"value": "horror"
+										},
+										{
+											"key": "filter%5Bdescription%5D",
+											"value": ""
+										},
+										{
+											"key": "search",
+											"value": "horror"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 07:01:01 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"Success get all genre\",\n    \"data\": [\n        {\n            \"createdAt\": \"2025-06-24T13:59:59.172848\",\n            \"updatedAt\": \"2025-06-24T13:59:59.172848\",\n            \"createdBy\": \"user1@test.com\",\n            \"updatedBy\": \"user1@test.com\",\n            \"id\": \"f531605a-d1e5-4853-8179-39db64cee65e\",\n            \"name\": \"Horror\",\n            \"description\": null\n        }\n    ],\n    \"paging\": {\n        \"currentPage\": 1,\n        \"size\": 10,\n        \"totalPages\": 1,\n        \"totalElements\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/genres/f531605a-d1e5-4853-8179-39db64cee65e",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"genres",
+								"f531605a-d1e5-4853-8179-39db64cee65e"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/genres/f531605a-d1e5-4853-8179-39db64cee65e",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"genres",
+										"f531605a-d1e5-4853-8179-39db64cee65e"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 07:01:43 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"Success get by id: f531605a-d1e5-4853-8179-39db64cee65e genre\",\n    \"data\": {\n        \"createdAt\": \"2025-06-24T13:59:59.172848\",\n        \"updatedAt\": \"2025-06-24T13:59:59.172848\",\n        \"createdBy\": \"user1@test.com\",\n        \"updatedBy\": \"user1@test.com\",\n        \"id\": \"f531605a-d1e5-4853-8179-39db64cee65e\",\n        \"name\": \"Horror\",\n        \"description\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Action\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/genres",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"genres"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Horror\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/genres",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"genres"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 06:59:59 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"message\": \"Success create genre\",\n    \"data\": {\n        \"createdAt\": \"2025-06-24T13:59:59.172848\",\n        \"updatedAt\": \"2025-06-24T13:59:59.172848\",\n        \"createdBy\": \"user1@test.com\",\n        \"updatedBy\": \"user1@test.com\",\n        \"id\": \"f531605a-d1e5-4853-8179-39db64cee65e\",\n        \"name\": \"Horror\",\n        \"description\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Horror Update\",\r\n    \"description\": \"Update\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/genres/f531605a-d1e5-4853-8179-39db64cee65e",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"genres",
+								"f531605a-d1e5-4853-8179-39db64cee65e"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Horror Update\",\r\n    \"description\": \"Update\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/genres/f531605a-d1e5-4853-8179-39db64cee65e",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"genres",
+										"f531605a-d1e5-4853-8179-39db64cee65e"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 07:01:58 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"message\": \"Success update genre\",\n    \"data\": {\n        \"createdAt\": \"2025-06-24T13:59:59.172848\",\n        \"updatedAt\": \"2025-06-24T14:01:58.4705526\",\n        \"createdBy\": \"user1@test.com\",\n        \"updatedBy\": \"user1@test.com\",\n        \"id\": \"f531605a-d1e5-4853-8179-39db64cee65e\",\n        \"name\": \"Horror Update\",\n        \"description\": \"Update\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/genres/f531605a-d1e5-4853-8179-39db64cee65e",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"genres",
+								"f531605a-d1e5-4853-8179-39db64cee65e"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/genres/f531605a-d1e5-4853-8179-39db64cee65e",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"genres",
+										"f531605a-d1e5-4853-8179-39db64cee65e"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 07:02:17 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"message\": \"Success delete genre\",\n    \"data\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/books?page=1&size=10&search=&sort=-createdAt&filter%5Bauthor%5D=&filter%5BpublishedAt%5D&filter%5Bgenres.name%5D&filter%5Bgenres.description%5D",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"books"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "search",
+									"value": ""
+								},
+								{
+									"key": "sort",
+									"value": "-createdAt"
+								},
+								{
+									"key": "filter%5Btitle%5D",
+									"value": "Mencari Jalan 1",
+									"disabled": true
+								},
+								{
+									"key": "filter%5Bauthor%5D",
+									"value": ""
+								},
+								{
+									"key": "filter%5BpublishedAt%5D",
+									"value": null
+								},
+								{
+									"key": "filter%5Bgenres.name%5D",
+									"value": null
+								},
+								{
+									"key": "filter%5Bgenres.description%5D",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get all",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/books?page=1&size=10&search=horror&sort=-createdAt&filter%5Btitle%5D=Mencari Jalan 1&filter%5Bauthor%5D=&filter%5BpublishedAt%5D&filter%5Bgenres.name%5D&filter%5Bgenres.description%5D",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"books"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "10"
+										},
+										{
+											"key": "search",
+											"value": "horror"
+										},
+										{
+											"key": "sort",
+											"value": "-createdAt"
+										},
+										{
+											"key": "filter%5Btitle%5D",
+											"value": "Mencari Jalan 1"
+										},
+										{
+											"key": "filter%5Bauthor%5D",
+											"value": ""
+										},
+										{
+											"key": "filter%5BpublishedAt%5D",
+											"value": null
+										},
+										{
+											"key": "filter%5Bgenres.name%5D",
+											"value": null
+										},
+										{
+											"key": "filter%5Bgenres.description%5D",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 07:09:33 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"Success get all book\",\n    \"data\": [\n        {\n            \"createdAt\": \"2025-06-24T14:04:29.188658\",\n            \"updatedAt\": \"2025-06-24T14:04:29.188658\",\n            \"createdBy\": \"user1@test.com\",\n            \"updatedBy\": \"user1@test.com\",\n            \"id\": \"34aa6b2d-b965-4f78-8765-70443239a4ef\",\n            \"title\": \"Mencari jalan 1\",\n            \"author\": null,\n            \"description\": \"Test doang\",\n            \"publishedAt\": 12345,\n            \"genres\": [\n                {\n                    \"createdAt\": \"2025-06-24T13:59:59.172848\",\n                    \"updatedAt\": \"2025-06-24T14:02:17.544485\",\n                    \"createdBy\": \"user1@test.com\",\n                    \"updatedBy\": \"user1@test.com\",\n                    \"id\": \"f531605a-d1e5-4853-8179-39db64cee65e\",\n                    \"name\": \"Horror Update\",\n                    \"description\": \"Update\"\n                }\n            ]\n        }\n    ],\n    \"paging\": {\n        \"currentPage\": 1,\n        \"size\": 10,\n        \"totalPages\": 1,\n        \"totalElements\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/books/34aa6b2d-b965-4f78-8765-70443239a4ef",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"books",
+								"34aa6b2d-b965-4f78-8765-70443239a4ef"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/books/34aa6b2d-b965-4f78-8765-70443239a4ef",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"books",
+										"34aa6b2d-b965-4f78-8765-70443239a4ef"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 07:23:44 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"Success get by id: 34aa6b2d-b965-4f78-8765-70443239a4ef book\",\n    \"data\": {\n        \"createdAt\": \"2025-06-24T14:04:29.188658\",\n        \"updatedAt\": \"2025-06-24T14:04:29.188658\",\n        \"createdBy\": \"user1@test.com\",\n        \"updatedBy\": \"user1@test.com\",\n        \"id\": \"34aa6b2d-b965-4f78-8765-70443239a4ef\",\n        \"title\": \"Mencari jalan 1\",\n        \"author\": null,\n        \"description\": \"Test doang\",\n        \"publishedAt\": 12345,\n        \"genres\": [\n            {\n                \"createdAt\": \"2025-06-24T13:59:59.172848\",\n                \"updatedAt\": \"2025-06-24T14:02:17.544485\",\n                \"createdBy\": \"user1@test.com\",\n                \"updatedBy\": \"user1@test.com\",\n                \"id\": \"f531605a-d1e5-4853-8179-39db64cee65e\",\n                \"name\": \"Horror Update\",\n                \"description\": \"Update\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Mencari jalan 1\",\r\n    \"author\": \"Mayutama\",\r\n    \"description\": \"Test doang\",\r\n    \"publishedAt\": 12345,\r\n    \"genres\": [\"bfa28106-89ba-449d-9a4d-59fc48cfac41\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/books",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"books"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Mencari jalan 2\",\r\n    \"author\": \"Mayutama\",\r\n    \"description\": \"Test doang\",\r\n    \"publishedAt\": 12345,\r\n    \"genres\": [\"f531605a-d1e5-4853-8179-39db64cee65e\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/books",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"books"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 07:04:47 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"message\": \"Success create book\",\n    \"data\": {\n        \"createdAt\": \"2025-06-24T14:04:47.760569\",\n        \"updatedAt\": \"2025-06-24T14:04:47.760569\",\n        \"createdBy\": \"user1@test.com\",\n        \"updatedBy\": \"user1@test.com\",\n        \"id\": \"4f0de06c-6660-4c97-9223-f1c901e768ab\",\n        \"title\": \"Mencari jalan 2\",\n        \"author\": \"Mayutama\",\n        \"description\": \"Test doang\",\n        \"publishedAt\": 12345,\n        \"genres\": [\n            {\n                \"createdAt\": \"2025-06-24T13:59:59.172848\",\n                \"updatedAt\": \"2025-06-24T14:02:17.544485\",\n                \"createdBy\": \"user1@test.com\",\n                \"updatedBy\": \"user1@test.com\",\n                \"id\": \"f531605a-d1e5-4853-8179-39db64cee65e\",\n                \"name\": \"Horror Update\",\n                \"description\": \"Update\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Mencari jalan 1 Update\",\r\n    \"author\": \"Mayutama Update\",\r\n    \"description\": \"Test doang Update\",\r\n    \"publishedAt\": 12345,\r\n    \"genres\": [\"f531605a-d1e5-4853-8179-39db64cee65e\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/books/34aa6b2d-b965-4f78-8765-70443239a4ef",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"books",
+								"34aa6b2d-b965-4f78-8765-70443239a4ef"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Mencari jalan 1 Update\",\r\n    \"author\": \"Mayutama Update\",\r\n    \"description\": \"Test doang Update\",\r\n    \"publishedAt\": 12345,\r\n    \"genres\": [\"f531605a-d1e5-4853-8179-39db64cee65e\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/books/34aa6b2d-b965-4f78-8765-70443239a4ef",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"books",
+										"34aa6b2d-b965-4f78-8765-70443239a4ef"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 07:25:15 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"message\": \"Success update book\",\n    \"data\": {\n        \"createdAt\": \"2025-06-24T14:04:29.188658\",\n        \"updatedAt\": \"2025-06-24T14:25:15.2738041\",\n        \"createdBy\": \"user1@test.com\",\n        \"updatedBy\": \"user1@test.com\",\n        \"id\": \"34aa6b2d-b965-4f78-8765-70443239a4ef\",\n        \"title\": \"Mencari jalan 1 Update\",\n        \"author\": \"Mayutama Update\",\n        \"description\": \"Test doang Update\",\n        \"publishedAt\": 12345,\n        \"genres\": [\n            {\n                \"createdAt\": \"2025-06-24T13:59:59.172848\",\n                \"updatedAt\": \"2025-06-24T14:02:17.544485\",\n                \"createdBy\": \"user1@test.com\",\n                \"updatedBy\": \"user1@test.com\",\n                \"id\": \"f531605a-d1e5-4853-8179-39db64cee65e\",\n                \"name\": \"Horror Update\",\n                \"description\": \"Update\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/books/34aa6b2d-b965-4f78-8765-70443239a4ef",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"books",
+								"34aa6b2d-b965-4f78-8765-70443239a4ef"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/books/34aa6b2d-b965-4f78-8765-70443239a4ef",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"books",
+										"34aa6b2d-b965-4f78-8765-70443239a4ef"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 07:25:34 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"message\": \"Success delete book\",\n    \"data\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/reviews?page=1&size=10&sort=-createdAt&filter%5Brating%5D=&filter%5BisVerified%5D=&search=&filter%5Bbook.title%5D=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reviews"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "sort",
+									"value": "-createdAt"
+								},
+								{
+									"key": "filter%5Brating%5D",
+									"value": ""
+								},
+								{
+									"key": "filter%5BisVerified%5D",
+									"value": ""
+								},
+								{
+									"key": "search",
+									"value": ""
+								},
+								{
+									"key": "filter%5Bbook.title%5D",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get all",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/reviews?page=1&size=10&sort=-createdAt&filter%5Brating%5D=5&filter%5BisVerified%5D=true&search=user&filter%5Bbook.title%5D=Mencari jalan 2&filter%5Buser.fullName%5D=user 1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"reviews"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "10"
+										},
+										{
+											"key": "sort",
+											"value": "-createdAt"
+										},
+										{
+											"key": "filter%5Brating%5D",
+											"value": "5"
+										},
+										{
+											"key": "filter%5BisVerified%5D",
+											"value": "true"
+										},
+										{
+											"key": "search",
+											"value": "user"
+										},
+										{
+											"key": "filter%5Bbook.title%5D",
+											"value": "Mencari jalan 2"
+										},
+										{
+											"key": "filter%5Buser.fullName%5D",
+											"value": "user 1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 09:27:40 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"Success get all review\",\n    \"data\": [\n        {\n            \"createdAt\": \"2025-06-24T15:58:02.217589\",\n            \"updatedAt\": \"2025-06-24T16:20:23.948803\",\n            \"createdBy\": \"user1@test.com\",\n            \"updatedBy\": \"user1@test.com\",\n            \"id\": \"b5c70746-a2a2-4e64-8586-27e22357fe82\",\n            \"rating\": 5,\n            \"comment\": \"Test bagus Update kecewa\",\n            \"isVerified\": true,\n            \"sentimentScore\": 0,\n            \"userName\": \"User 1\",\n            \"book\": {\n                \"createdAt\": \"2025-06-24T14:04:47.760569\",\n                \"updatedAt\": \"2025-06-24T14:04:47.760569\",\n                \"createdBy\": \"user1@test.com\",\n                \"updatedBy\": \"user1@test.com\",\n                \"id\": \"4f0de06c-6660-4c97-9223-f1c901e768ab\",\n                \"title\": \"Mencari jalan 2\",\n                \"author\": \"Mayutama\",\n                \"description\": \"Test doang\",\n                \"publishedAt\": 12345,\n                \"genres\": [\n                    {\n                        \"createdAt\": \"2025-06-24T13:59:59.172848\",\n                        \"updatedAt\": \"2025-06-24T14:02:17.544485\",\n                        \"createdBy\": \"user1@test.com\",\n                        \"updatedBy\": \"user1@test.com\",\n                        \"id\": \"f531605a-d1e5-4853-8179-39db64cee65e\",\n                        \"name\": \"Horror Update\",\n                        \"description\": \"Update\"\n                    }\n                ]\n            }\n        }\n    ],\n    \"paging\": {\n        \"currentPage\": 1,\n        \"size\": 10,\n        \"totalPages\": 1,\n        \"totalElements\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/reviews/b9f9913a-2719-4bcd-aaf1-db5199465988",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reviews",
+								"b9f9913a-2719-4bcd-aaf1-db5199465988"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/reviews/b9f9913a-2719-4bcd-aaf1-db5199465988",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"reviews",
+										"b9f9913a-2719-4bcd-aaf1-db5199465988"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 08:43:30 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"Success get by id: b9f9913a-2719-4bcd-aaf1-db5199465988 review\",\n    \"data\": {\n        \"createdAt\": \"2025-06-24T15:29:29.145526\",\n        \"updatedAt\": \"2025-06-24T15:29:29.145526\",\n        \"createdBy\": \"user1@test.com\",\n        \"updatedBy\": \"user1@test.com\",\n        \"id\": \"b9f9913a-2719-4bcd-aaf1-db5199465988\",\n        \"rating\": 4,\n        \"comment\": \"Test\",\n        \"isVerified\": false,\n        \"sentimentScore\": null,\n        \"userName\": \"User 1\",\n        \"book\": {\n            \"createdAt\": \"2025-06-24T14:04:47.760569\",\n            \"updatedAt\": \"2025-06-24T14:04:47.760569\",\n            \"createdBy\": \"user1@test.com\",\n            \"updatedBy\": \"user1@test.com\",\n            \"id\": \"4f0de06c-6660-4c97-9223-f1c901e768ab\",\n            \"title\": \"Mencari jalan 2\",\n            \"author\": \"Mayutama\",\n            \"description\": \"Test doang\",\n            \"publishedAt\": 12345,\n            \"genres\": [\n                {\n                    \"createdAt\": \"2025-06-24T13:59:59.172848\",\n                    \"updatedAt\": \"2025-06-24T14:02:17.544485\",\n                    \"createdBy\": \"user1@test.com\",\n                    \"updatedBy\": \"user1@test.com\",\n                    \"id\": \"f531605a-d1e5-4853-8179-39db64cee65e\",\n                    \"name\": \"Horror Update\",\n                    \"description\": \"Update\"\n                }\n            ]\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rating\": 4,\r\n    \"comment\": \"Test bagus bagus\",\r\n    \"bookId\": \"ecd72c5a-d994-451d-ba12-5824c1eda661\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/reviews",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reviews"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"rating\": 4,\r\n    \"comment\": \"Test bagus\",\r\n    \"bookId\": \"4f0de06c-6660-4c97-9223-f1c901e768ab\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/reviews",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"reviews"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 08:58:02 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"message\": \"Success create review\",\n    \"data\": {\n        \"createdAt\": \"2025-06-24T15:58:02.2175892\",\n        \"updatedAt\": \"2025-06-24T15:58:02.2175892\",\n        \"createdBy\": \"user1@test.com\",\n        \"updatedBy\": \"user1@test.com\",\n        \"id\": \"b5c70746-a2a2-4e64-8586-27e22357fe82\",\n        \"rating\": 4,\n        \"comment\": \"Test bagus\",\n        \"isVerified\": true,\n        \"sentimentScore\": 0.1,\n        \"userName\": \"User 1\",\n        \"book\": {\n            \"createdAt\": \"2025-06-24T14:04:47.760569\",\n            \"updatedAt\": \"2025-06-24T14:04:47.760569\",\n            \"createdBy\": \"user1@test.com\",\n            \"updatedBy\": \"user1@test.com\",\n            \"id\": \"4f0de06c-6660-4c97-9223-f1c901e768ab\",\n            \"title\": \"Mencari jalan 2\",\n            \"author\": \"Mayutama\",\n            \"description\": \"Test doang\",\n            \"publishedAt\": 12345,\n            \"genres\": [\n                {\n                    \"createdAt\": \"2025-06-24T13:59:59.172848\",\n                    \"updatedAt\": \"2025-06-24T14:02:17.544485\",\n                    \"createdBy\": \"user1@test.com\",\n                    \"updatedBy\": \"user1@test.com\",\n                    \"id\": \"f531605a-d1e5-4853-8179-39db64cee65e\",\n                    \"name\": \"Horror Update\",\n                    \"description\": \"Update\"\n                }\n            ]\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rating\": 5,\r\n    \"comment\": \"Test bagus Update kecewa\",\r\n    \"bookId\": \"4f0de06c-6660-4c97-9223-f1c901e768ab\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/reviews/b5c70746-a2a2-4e64-8586-27e22357fe82",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reviews",
+								"b5c70746-a2a2-4e64-8586-27e22357fe82"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"rating\": 5,\r\n    \"comment\": \"Test bagus Update kecewa\",\r\n    \"bookId\": \"4f0de06c-6660-4c97-9223-f1c901e768ab\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/reviews/b5c70746-a2a2-4e64-8586-27e22357fe82",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"reviews",
+										"b5c70746-a2a2-4e64-8586-27e22357fe82"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 09:20:24 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"message\": \"Success update review\",\n    \"data\": {\n        \"createdAt\": \"2025-06-24T15:58:02.217589\",\n        \"updatedAt\": \"2025-06-24T16:20:23.948803\",\n        \"createdBy\": \"user1@test.com\",\n        \"updatedBy\": \"user1@test.com\",\n        \"id\": \"b5c70746-a2a2-4e64-8586-27e22357fe82\",\n        \"rating\": 5,\n        \"comment\": \"Test bagus Update kecewa\",\n        \"isVerified\": true,\n        \"sentimentScore\": 0,\n        \"userName\": \"User 1\",\n        \"book\": {\n            \"createdAt\": \"2025-06-24T14:04:47.760569\",\n            \"updatedAt\": \"2025-06-24T14:04:47.760569\",\n            \"createdBy\": \"user1@test.com\",\n            \"updatedBy\": \"user1@test.com\",\n            \"id\": \"4f0de06c-6660-4c97-9223-f1c901e768ab\",\n            \"title\": \"Mencari jalan 2\",\n            \"author\": \"Mayutama\",\n            \"description\": \"Test doang\",\n            \"publishedAt\": 12345,\n            \"genres\": [\n                {\n                    \"createdAt\": \"2025-06-24T13:59:59.172848\",\n                    \"updatedAt\": \"2025-06-24T14:02:17.544485\",\n                    \"createdBy\": \"user1@test.com\",\n                    \"updatedBy\": \"user1@test.com\",\n                    \"id\": \"f531605a-d1e5-4853-8179-39db64cee65e\",\n                    \"name\": \"Horror Update\",\n                    \"description\": \"Update\"\n                }\n            ]\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/reviews/be1da088-10a3-459f-9c03-2643a45008bb",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reviews",
+								"be1da088-10a3-459f-9c03-2643a45008bb"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/reviews/b9f9913a-2719-4bcd-aaf1-db5199465988",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"reviews",
+										"b9f9913a-2719-4bcd-aaf1-db5199465988"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 08:44:05 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"message\": \"Success delete review\",\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "get by book id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/reviews/book/ecd72c5a-d994-451d-ba12-5824c1eda661",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reviews",
+								"book",
+								"ecd72c5a-d994-451d-ba12-5824c1eda661"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/reviews/book/4f0de06c-6660-4c97-9223-f1c901e768ab",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"reviews",
+										"book",
+										"4f0de06c-6660-4c97-9223-f1c901e768ab"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 09:51:06 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"Success get all by book id: 4f0de06c-6660-4c97-9223-f1c901e768ab\",\n    \"data\": [\n        {\n            \"createdAt\": \"2025-06-24T15:58:02.217589\",\n            \"updatedAt\": \"2025-06-24T16:20:23.948803\",\n            \"createdBy\": \"user1@test.com\",\n            \"updatedBy\": \"user1@test.com\",\n            \"id\": \"b5c70746-a2a2-4e64-8586-27e22357fe82\",\n            \"rating\": 5,\n            \"comment\": \"Test bagus Update kecewa\",\n            \"isVerified\": true,\n            \"sentimentScore\": 0,\n            \"userName\": \"User 1\",\n            \"book\": {\n                \"createdAt\": \"2025-06-24T14:04:47.760569\",\n                \"updatedAt\": \"2025-06-24T14:04:47.760569\",\n                \"createdBy\": \"user1@test.com\",\n                \"updatedBy\": \"user1@test.com\",\n                \"id\": \"4f0de06c-6660-4c97-9223-f1c901e768ab\",\n                \"title\": \"Mencari jalan 2\",\n                \"author\": \"Mayutama\",\n                \"description\": \"Test doang\",\n                \"publishedAt\": 12345,\n                \"genres\": [\n                    {\n                        \"createdAt\": \"2025-06-24T13:59:59.172848\",\n                        \"updatedAt\": \"2025-06-24T14:02:17.544485\",\n                        \"createdBy\": \"user1@test.com\",\n                        \"updatedBy\": \"user1@test.com\",\n                        \"id\": \"f531605a-d1e5-4853-8179-39db64cee65e\",\n                        \"name\": \"Horror Update\",\n                        \"description\": \"Update\"\n                    }\n                ]\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "get current review",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/reviews/book/ecd72c5a-d994-451d-ba12-5824c1eda661/current",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reviews",
+								"book",
+								"ecd72c5a-d994-451d-ba12-5824c1eda661",
+								"current"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/reviews/book/4f0de06c-6660-4c97-9223-f1c901e768ab/current",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"reviews",
+										"book",
+										"4f0de06c-6660-4c97-9223-f1c901e768ab",
+										"current"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 09:52:53 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"Success get by book id: 4f0de06c-6660-4c97-9223-f1c901e768ab\",\n    \"data\": {\n        \"createdAt\": \"2025-06-24T15:58:02.217589\",\n        \"updatedAt\": \"2025-06-24T16:20:23.948803\",\n        \"createdBy\": \"user1@test.com\",\n        \"updatedBy\": \"user1@test.com\",\n        \"id\": \"b5c70746-a2a2-4e64-8586-27e22357fe82\",\n        \"rating\": 5,\n        \"comment\": \"Test bagus Update kecewa\",\n        \"isVerified\": true,\n        \"sentimentScore\": 0,\n        \"userName\": \"User 1\",\n        \"book\": {\n            \"createdAt\": \"2025-06-24T14:04:47.760569\",\n            \"updatedAt\": \"2025-06-24T14:04:47.760569\",\n            \"createdBy\": \"user1@test.com\",\n            \"updatedBy\": \"user1@test.com\",\n            \"id\": \"4f0de06c-6660-4c97-9223-f1c901e768ab\",\n            \"title\": \"Mencari jalan 2\",\n            \"author\": \"Mayutama\",\n            \"description\": \"Test doang\",\n            \"publishedAt\": 12345,\n            \"genres\": [\n                {\n                    \"createdAt\": \"2025-06-24T13:59:59.172848\",\n                    \"updatedAt\": \"2025-06-24T14:02:17.544485\",\n                    \"createdBy\": \"user1@test.com\",\n                    \"updatedBy\": \"user1@test.com\",\n                    \"id\": \"f531605a-d1e5-4853-8179-39db64cee65e\",\n                    \"name\": \"Horror Update\",\n                    \"description\": \"Update\"\n                }\n            ]\n        }\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Dashboards",
+			"item": [
+				{
+					"name": "get top rated book",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/dashboards/top-rated-book/5",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dashboards",
+								"top-rated-book",
+								"5"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/dashboards/top-rated-book/5",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"dashboards",
+										"top-rated-book",
+										"5"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 13:46:05 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"Success get top rated book\",\n    \"data\": [\n        {\n            \"id\": \"4f0de06c-6660-4c97-9223-f1c901e768ab\",\n            \"title\": \"Mencari jalan 2\",\n            \"averageRating\": 5,\n            \"totalReviews\": 1\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "get most active user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/dashboards/most-active-user/5",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dashboards",
+								"most-active-user",
+								"5"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/dashboards/most-active-user/5",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"dashboards",
+										"most-active-user",
+										"5"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 24 Jun 2025 13:59:48 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"Success get top rated book\",\n    \"data\": [\n        {\n            \"fullName\": \"User 1\",\n            \"totalReviews\": 1\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}

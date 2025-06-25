@@ -41,9 +41,9 @@ public class AuthController {
             CookieUtil.setAuthCookie(response, res.getAccessToken(), res.getRefreshToken());
             res.setAccessToken(null);
             res.setRefreshToken(null);
-            return ResponseUtil.responseSuccess(res, "Login successfully");
+            return ResponseUtil.responseSuccess(res, "Login successful. Token has been added to the cookie.");
         } else {
-            return ResponseUtil.responseSuccess(res, "Login successfully");
+            return ResponseUtil.responseSuccess(res, "Login successful.");
         }
     }
 
